@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Framework Vue</title>
+</head>
+
+<body>
+
+   <!-- Урок №2 (Семинар №1) -->
+
+   <div id="app">
+      <h1 class="title">{{message}}</h1>
+      <button v-on:click="changeText">Click Button</button>
+      <h2>Счётчик:</h2>
+      <button v-on:click="increase(5, $event)">Increase {{counter}}</button>
+      <h2 v-on:mousemove="mouseMove($event)">
+         Mouse Move {{x}} - {{y}}
+         <span v-on:mousemove.stop>Stop text</span> <!--После двоеточия нет пробела !!!-->
+      </h2>
+      <p v-html="bigText"></p>
+
+      <h3 v-if="addProductToCart">
+         Добавить товар в корзину ?
+      </h3>
+
+      <h3 v-else="!addProductToCart">
+         Товар добавлен в корзину
+      </h3>
+      <!-- <button @click="showAddProductToCart">Добавить</button> -->
+      <button @click="addProductToCart = !addProductToCart">Добавить</button>
+      <h3 v-show="!addProductToCart">Hide me !!!</h3>
+
+      <h3>HomeWork</h3>
+      <!-- <button v-if="rotatedText">Перевернуть</button>
+      <button style="transform: rotate(180deg);" v-else="!rotatedText">Перевернуто</button> -->
+      <button @click="rotateText" v-bind:style="rotateStyle">Перевернуть</button>
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+   <script src="./script.js"></script>
+</body>
+
+</html>
