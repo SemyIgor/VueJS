@@ -12,18 +12,16 @@
    <div class="wrapper">
       <div id="app">
          <h3 class="taskNumber">Задача 01</h3>
-         <button class="rotateTxt button" @click="rotateText">{{wordOnButton}}</button>
+         <button class="rotateTxt button" @click="rotateText" v-bind:style="rotateStyle">Перевернуть</button>
       </div>
 
       <div id="app02">
          <h3 class="taskNumber">Задачи 02 и 03*</h3>
 
          <button @click="addListItem" class="addBtn button">Добавить</button>
-         <ul class="" id="arrToList">
-            <li v-for="(item, index) in listItems" :key="item.id">{{index + 1}}. {{item.text}} <button
-                  @click="removeListItem(index)">X</button>
-            </li>
-         </ul>
+         <div class="listContainer">
+            <ul id="ulVar"></ul>
+         </div>
       </div>
 
    </div>

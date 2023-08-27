@@ -5,13 +5,14 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Framework Vue</title>
-</head>
+   <link rel="stylesheet" href="./style.css" </head>
 
 <body>
 
+   <!-- Для просмотра блока кода следует убрать его class='hide' -->
    <!-- Урок №2 (Семинар №1) -->
 
-   <div id="app">
+   <div class="hide" id="app">
       <h1 class="title">{{message}}</h1>
       <button v-on:click="changeText">Click Button</button>
       <h2>Счётчик:</h2>
@@ -38,6 +39,110 @@
       <button style="transform: rotate(180deg);" v-else="!rotatedText">Перевернуто</button> -->
       <button @click="rotateText" v-bind:style="rotateStyle">Перевернуть</button>
    </div>
+
+   <!-- Добавить товар в корзину. Моя попытка -->
+   <div class="hide" id="app1">
+      <p>Товаров в карзине {{goodsNumber}} штук</p>
+      <span>Маска дайвера</span>
+      <button v-on:click="addGoodToCart(goodInCart1)" class="button">{{goodInCart1 ?
+         goodInCartText : goodAddToCart}}
+      </button><br>
+      <!-- <span>Дыхательная трубка</span>
+      <button v-on:click="goodsNumber++" class="button">Добавить</button><br>
+      <span>Ласты</span>
+      <button v-on:click="goodsNumber++" class="button">Добавить</button><br>
+      <span>Гидрокостюм</span>
+      <button v-on:click="goodsNumber++" class="button">Добавить</button><br> -->
+   </div>
+
+   <!-- Отрисуем массив в список -->
+   <ul class="hide" id="arrToList">
+      <li v-for="item in diversKit" :key="item.id">{{item.kit }}</li>
+   </ul>
+
+   <!-- Добавить товар в корзину -->
+   <div class="hide" id="task02">
+      <p>Товаров в корзине {{counter}}</p>
+      <button class="button" v-for="button in buttons" @click="onClick(button)" :key="button.id">
+         {{button.text}}
+      </button>
+   </div>
+
+   <!-- Добавить товар в корзину Второй вариант -->
+   <div class="hide" id="task02_1">
+      <p>Товаров в корзине {{counter}}</p>
+      <button class="button" v-for="button in buttons" @click="onClick(button)" :key="button.id">
+         {{button.text = button.inCart ? 'Товар в корзине' : 'Купить'}}
+      </button>
+   </div>
+
+   <!-- Добавить товар в корзину Третий вариант -->
+   <div class="hide" id="task021">
+      <p>Товаров в корзине {{counter}}</p>
+      <button class="button" v-for="button in buttons" @click="onClick(button)" :key="button.id">
+         <p v-if="!button.inCart">Купить</p>
+         <p v-else="button.inCart">Товар в корзине</p>
+      </button>
+   </div>
+
+
+   <!-- Задание 3. Исполнилось ли вам 14 лет, чтобы заказать товар? -->
+   <!-- Первый вариант (без использования методов, только управление свойствами) -->
+   <!-- <div class="center" id="task03">
+      <button @click="closed=true" class="button">Мне исполнилось 14 лет</button>
+      <button @click="closed=false" class="button">Мне еще нет 14 лет</button>
+      <p v-if="closed===true">Можете заказать товар</p>
+      <p v-else-if="closed===false">Доступ закрыт</p>
+      <p v-else>Сделайте выбор</p>
+   </div> -->
+
+   <!-- Второй вариант (проще за счёт исключения сообщения "Сделайте выбор") -->
+   <!-- <div class="center" id="task03">
+      <button @click="closed=true" class="button">Мне исполнилось 14 лет</button>
+      <button @click="closed=false" class="button">Мне еще нет 14 лет</button>
+      <p v-if="closed===true">Можете заказать товар</p>
+      <p v-else>Доступ закрыт</p>
+   </div> -->
+
+   <!-- Третий вариант (использование методов)-->
+   <!-- <div class="center" id="task03">
+      <button @click="haveYou14" class="button">Мне исполнилось 14 лет</button>
+      <button @click="haveNotYou14" class="button">Мне еще нет 14 лет</button>
+      <p v-if="closed===true">Можете заказать товар</p>
+      <p v-else>Доступ закрыт</p>
+   </div> -->
+
+   <!-- Четвёртый вариант (использование методов с параметром)-->
+   <div class="center hide" id="task03">
+      <button @click="chequeAge(true)" class="button">Мне исполнилось 14 лет</button>
+      <button @click="chequeAge(false)" class="button">Мне еще нет 14 лет</button>
+      <p v-if="isAllowed">Можете заказать товар</p>
+      <p v-else>Доступ закрыт</p>
+   </div>
+
+   <!-- Задание 4. Показать ещё (с анимацией !) -->
+   <div id="task04" class="center task04 hide">
+      <button @click="toShow" class="button">Показать ещё</button>
+      <p v-show="showMe">А вот и я!</p>
+   </div>
+
+   <!-- Задание 5. -->
+   <!-- Вариант 1 -->
+   <div id="task05" class="center hide">
+      <button @click="generateRandom" class="button">Сгенерировать случайное число</button>
+      <p v-show="randomNumber >= 0">Получено число {{randomNumber}}</p>
+      <p v-if="randomNumber < 0">Число не сгенерировано</p>
+      <p v-else-if="randomNumber < 5">Число меньше 5</p>
+      <p v-else-if="randomNumber < 10">Число от 5 до 9</p>
+      <p v-else>Число равно 10</p>
+   </div>
+
+   <!-- Вариант 2 -->
+   <div id="task051" class="center">
+
+   </div>
+
+
 
    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
    <script src="./script.js"></script>

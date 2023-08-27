@@ -12,11 +12,15 @@ function task01() {
 	const app = new Vue({
 		el: '#app',
 		data: {
-			wordOnButton: 'Перевернуть',
+			rotatedText: false,
+			rotateStyle: ``,
 		},
 		methods: {
 			rotateText() {
-				this.wordOnButton = this.wordOnButton.split('').reverse().join('');
+				this.rotatedText = !this.rotatedText;
+				this.rotateStyle = this.rotatedText
+					? `transform: rotate(180deg);`
+					: `transform: rotate(0deg);`;
 			},
 		},
 	});
@@ -26,22 +30,30 @@ function task02() {
 	const app02 = new Vue({
 		el: '#app02',
 		data: {
+			ulVar: document.getElementById('ulVar'),
 			counter: 0,
-			listItem: { text: 'Новый элемент списка' },
-			listItems: [
-				{ text: 'Новый элемент списка-1' },
-				{ text: 'Новый элемент списка-2' },
-				{ text: 'Новый элемент списка-3' },
-				{ text: 'Новый элемент списка-4' },
-			],
+			listItem: null,
 		},
 		methods: {
 			addListItem() {
-				this.listItems.push(this.listItem);
+				ulVar.insertAdjacentHTML(
+					'beforeend',
+					`<li class="listItem" style="cursor: pointer; margin-bottom: 5px; list-style: square;">Новый элемент списка ${++this
+						.counter}</li>`
+				);
+
+				ulVar.lastChild.addEventListener(
+					'click',
+					(el) => {
+						console.log(`Удалён ${el.target.innerText}`);
+						alert(`Удалён ${el.target.innerText}`);
+						el.target.remove();
+					},
+					{ once: true }
+				);
 			},
-			removeListItem(index) {
-				console.log(index);
-				this.listItems.splice(index, 1);
+			removeListItem() {
+				console.log(this.listItem);
 			},
 		},
 	});
