@@ -1,0 +1,17 @@
+button {
+   margin-right: 20px;
+}
+
+.base-list {
+   padding: 5px;
+}
+
+.direction {
+   padding: 4px;
+}
+
+.btns {
+   display: flex;
+   justify-content: start;
+   align-items: center;
+}

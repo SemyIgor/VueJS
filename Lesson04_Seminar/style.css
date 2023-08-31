@@ -1,0 +1,8 @@
+.i-task01 {
+   max-width: 50vw;
+}
+
+.hidden {
+   position: absolute;
+   transform: translateX(200vw);
+}

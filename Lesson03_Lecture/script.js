@@ -1,7 +1,7 @@
 new Vue({
 	el: '#app',
 	data: {
-		linkHref: 'product.html',
+		linkHref: './product.html',
 	},
 	methods: {
 		send() {

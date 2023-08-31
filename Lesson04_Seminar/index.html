@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>VueJS_Lesson04</title>
+   <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+   <div id="task01" class="hidden">
+      <h1>{{mess}}</h1>
+      <img :src="product.picture" :alt="product.name" class="i-task01">
+      <p>{{product.name}}</p>
+      <p>{{product.price}} руб.</p>
+      <button @click="activateDiscount" type="button">Скидка <span>{{product.discount}} руб.</span></button>
+   </div>
+
+   <ul id="task02" class="hidden">
+      <li v-for="(user, index) in users" :key="user.id">{{user.name}} - {{user.age}}</li>
+   </ul>
+
+   <ul id="task03" class="hidden">
+      <li v-for="(good, index) in goods" :key="good.id">
+         <input type="text" v-model="good.inputField">
+         <input type="checkbox" v-model="good.checkboxField"> {{good.nameField}}
+      </li>
+      <button @click="sendForm" class="button" type="submit">Отправить</button>
+   </ul>
+
+   <div id="task04">
+      <form action="#">
+         <p>Имя:</p>
+         <input type="text" v-model="name">
+         <p>Фамилия:</p>
+         <input type="text" v-model="surname">
+         <p>E-mail:</p>
+         <input type="email" v-model="email">
+         <p></p>
+         <button @click="addUser" class="button" type="submit">Добавить контакт</button>
+      </form>
+
+      <ul>
+         <li v-for="(user, index) in users" :key="index">{{user.name}} {{user.surname}} - {{user.email}}</li>
+         <!-- Можно было применить деструктуризацию: -->
+         <!-- <li v-for="({name, surname, email}, index) in users" :key="index">{{name}} {{surname}} - {{email}}</li> -->
+      </ul>
+   </div>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+   <script src="./script.js"></script>
+</body>
+
+</html>
