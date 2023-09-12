@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Vue Components</title>
+   <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+   <div class="hidden" id="app">
+      <!-- Задача №1 -->
+      <counter-component></counter-component>
+   </div>
+
+   <div class="hidden" id="todo-list">
+      <todo-list></todo-list>
+
+
+   </div>
+
+   <div id="app1" class="todo-list">
+      <todo-list></todo-list>
+   </div>
+
+   <div id="app2" class="hidden todo-list">
+      <todo-list></todo-list>
+   </div>
+
+   <div id="filteredlist" class="hidden filteredlist">
+      <filtered-list></filtered-list>
+   </div>
+
+   <div id="goodslist" class="hidden goodslist">
+      <task-4></task-4>
+   </div>
+
+   <div id="app3" class="hidden app3">
+      <h1>Сортировка товаров по цене</h1>
+      <button @click="sortByPrice(true)">Сортировать по увеличению цены</button>
+      <button @click="sortByPrice(false)">Сортировать по уменьшению цены</button>
+      <div>
+         <product v-for="product in sortedProducts" :key="product.id" :product="product"></product>
+      </div>
+   </div>
+
+   <div id="app21">
+      <ol>
+         <!-- Создаём экземпляр компонента todo-item -->
+         <todo-item></todo-item>
+      </ol>
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+   <script src="./script.js"></script>
+</body>
+
+</html>

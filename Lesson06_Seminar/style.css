@@ -1,0 +1,13 @@
+ul {
+   margin: 0;
+   /* padding: 0; */
+}
+
+.hidden {
+   transform: translateX(200vw);
+   position: absolute;
+}
+
+button {
+   margin-left: 10px;
+}

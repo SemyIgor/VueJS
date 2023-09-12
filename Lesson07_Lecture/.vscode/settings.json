@@ -1,0 +1,6 @@
+{
+	"eslint.options": {
+		// "configFile": "путь к файлу babel.config.js"
+		"configFile": "J:MY_WEB_GEEKBRAINS_ВНЕ_ЧЕТВЕРТИ_05 VueJSLesson07_Lecture\\first-cli\\babel.config.js"
+	}
+}
